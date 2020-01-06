@@ -1,0 +1,5 @@
+package com.bridgelabz.felloship.model;
+
+public class TransactionLog {
+
+}

@@ -1,0 +1,11 @@
+package com.bridgelabz.felloship.model;
+
+public class TransactionLog {
+
+	String username;
+	String companysymbol;
+	String companyname;
+String companyshares;
+String shareprice;
+
+}

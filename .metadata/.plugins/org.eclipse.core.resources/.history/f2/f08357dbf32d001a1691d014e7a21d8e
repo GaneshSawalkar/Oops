@@ -1,0 +1,34 @@
+package com.Bridgelab.Felloship.oops;
+
+import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JsonObject;
+
+import com.google.gson.Gson;
+
+@SuppressWarnings({ "unused", "deprecation" })
+public class Person2 {
+
+	String FirstName;
+	String LastName;
+	String Address;
+	String State;
+	String City;
+	String zipcode;
+	String phone;
+
+
+	public Person2(String firstName, String lastName, String address, String state, String city, String zipcode,
+			String phone) {
+		super();
+		FirstName = firstName;
+		LastName = lastName;
+		Address = address;
+		State = state;
+		City = city;
+		this.zipcode = zipcode;
+		this.phone = phone;
+	}
+
+}

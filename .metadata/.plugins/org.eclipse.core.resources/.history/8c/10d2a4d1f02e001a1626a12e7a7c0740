@@ -1,0 +1,25 @@
+package com.Bridgelab.Felloship.oops;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class inventory {
+
+	public static void main(String[] args) throws IOException {
+		read();
+	}
+
+	private static void read() throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		BufferedReader bufferedReader = new BufferedReader(new FileReader("/home/admin1/Desktop/inventory.json"));
+		Product array = gson.fromJson(bufferedReader, Product.class);
+	System.out.println(gson.toJson(array.getName()));	
+	}
+l
+}

@@ -1,0 +1,16 @@
+[ {
+  "companysimbol" : "&",
+  "companyname" : "ampersand",
+  "companyavailableshare" : 45,
+  "shareprice" : 62
+}, {
+  "companysimbol" : "!",
+  "companyname" : "hatchtech",
+  "companyavailableshare" : 85,
+  "shareprice" : 25
+}, {
+  "companysimbol" : "*",
+  "companyname" : "multitech",
+  "companyavailableshare" : 50,
+  "shareprice" : 30
+} ]

@@ -1,0 +1,14 @@
+package com.bridgelabz.felloship.main;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class StockAccountTest3 {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

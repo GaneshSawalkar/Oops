@@ -1,0 +1,51 @@
+package com.bridgelabz.felloship.model;
+
+import java.util.Date;
+
+public class TransactionLog {
+
+	String username;
+	String companysymbol;
+	String companyname;
+	String companyshares;
+	String shareprice;
+	Date date;
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getCompanysymbol() {
+		return companysymbol;
+	}
+	public void setCompanysymbol(String companysymbol) {
+		this.companysymbol = companysymbol;
+	}
+	public String getCompanyname() {
+		return companyname;
+	}
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+	public String getCompanyshares() {
+		return companyshares;
+	}
+	public void setCompanyshares(String companyshares) {
+		this.companyshares = companyshares;
+	}
+	public String getShareprice() {
+		return shareprice;
+	}
+	public void setShareprice(String shareprice) {
+		this.shareprice = shareprice;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+
+}

@@ -1,0 +1,29 @@
+package com.bridgelabz.felloship.source;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+public class check {
+
+	public static void main(String[] args) {
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(
+					"/home/admin1/Desktop/JavaProject/com.bridgelbz.felloship.addressbook/src/com/bridgelabz/felloship/utility/demo.json"));
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			TypeToken userListType = new TypeToken<ArrayList<Person>>();
+
+			 
+			ArrayList<Person> list = gson.fromJson(bufferedReader,  userListType);  
+		//	ArrayList<Person> list = gson.fromJson(bufferedReader, TypeToken<ArrayList>());
+			System.out.println(list);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

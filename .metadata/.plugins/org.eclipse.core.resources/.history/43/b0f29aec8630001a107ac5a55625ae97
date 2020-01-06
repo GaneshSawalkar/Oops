@@ -1,0 +1,22 @@
+package com.Bridgelab.Felloship.datastructure;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+@SuppressWarnings("unused")
+public class write {
+	public static void main(String[] args) throws IOException {
+		
+		FileWriter fw = new FileWriter(new File("/home/admin1/Desktop/demo.txt"));
+		
+		BufferedWriter bw = new BufferedWriter(fw);
+		for (Integer i = 0; i < 100; i++) {
+			bw.write(String.valueOf(i));
+			bw.write(" ");
+		}
+		bw.close();
+		fw.close();
+	}
+}

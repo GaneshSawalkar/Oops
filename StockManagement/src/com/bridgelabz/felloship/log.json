@@ -1,0 +1,57 @@
+[ {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "sdjh",
+  "companyshares" : 2,
+  "shareprice" : 200,
+  "date" : 1578310967369
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 1,
+  "shareprice" : 62,
+  "date" : 1578314766360
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "#",
+  "companyname" : "hatchtech",
+  "companyshares" : 3,
+  "shareprice" : 75,
+  "date" : 1578314813696
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 4,
+  "shareprice" : 248,
+  "date" : 1578314911767
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 2,
+  "shareprice" : 124,
+  "date" : 1578314991583
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 4,
+  "shareprice" : 248,
+  "date" : 1578315400661
+}, {
+  "transction" : "sale",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 2,
+  "shareprice" : 124,
+  "date" : 1578315476654
+} ]

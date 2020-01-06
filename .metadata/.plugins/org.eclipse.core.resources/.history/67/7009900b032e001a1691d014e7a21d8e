@@ -1,0 +1,49 @@
+package AddressBook;
+
+import java.util.Scanner;
+
+public class AddressBook {
+
+	public static void main(String[] args) {
+
+		System.out.println("enter the choice :\n1 -> Create New Book\n" + "2 -> Open existing book \n" + "3 -> Save \n"
+				+ "4 -> Save as\n" + "5 -> Quit");
+		action();
+
+	}
+
+	@SuppressWarnings("resource")
+	public static void action() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("your Choice is : ");
+		int choice = scanner.nextInt();
+		switch (choice) {
+
+		case 1:
+			utilityaddressbook.Utility.createfile();
+			break;
+
+		case 2:
+			utilityaddressbook.Utility.openfile();
+			break;
+
+		case 3:
+			utilityaddressbook.Utility.saveinfile();
+			break;
+
+		case 4:
+			utilityaddressbook.Utility.saveas();
+			break;
+
+		case 5:
+			System.out.println("Thank you...." + "Have a Nice Day...!");
+			return;
+
+		default:
+			System.out.println("invalid choice..." + "select again");
+			action();
+			break;
+		}
+	}
+
+}

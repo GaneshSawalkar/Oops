@@ -1,0 +1,9 @@
+package com.bridgelabz.felloship.main;
+
+public class stockmodel {
+	public String companysimbol;
+	public String companyname;
+	public String companyavailableshare;
+	public int shareprice;
+
+}

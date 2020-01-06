@@ -1,0 +1,94 @@
+package com.Bridgelab.Felloship.datastructure;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import com.Bridgelab.Felloship.Utility.Utility;
+
+@SuppressWarnings("unused")
+public class HashingStack<T> extends linkedlist<Integer> {
+	static Object[] ob = new Object[11];
+
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
+	public void OrderdFileRW(String spath) throws IOException {
+		for (int i = 0; i < ob.length; i++) {
+			ob[i] = new MyOrderedList();
+		}
+		try {
+			File fi = new File(spath);
+			BufferedReader in = new BufferedReader(new FileReader(fi));
+			String str[] = in.readLine().split(" ");
+			System.out.println("read file..");
+			for (int i = 0; i < str.length; i++) {
+				int temp = Integer.parseInt(str[i]);
+				MyOrderedList<Integer> list = (MyOrderedList) ob[(temp % 11)];
+				list.add(temp);
+			}
+			for (int i = 0; i < ob.length; i++) {
+				MyOrderedList<Integer> list = (MyOrderedList<Integer>) ob[i];
+				System.out.println("stack " + i);
+				list.show();
+				System.out.println();
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked", "static-access" })
+	public void Filewrite(String spath) throws IOException {
+		System.out.print(" enter the search integer : ");
+		int check = Utility.getInt();
+		int checkval = check % 11;
+		HashingStack l = new HashingStack();
+
+		HashingStack.checkllist(checkval, check);
+		FileWriter fw = new FileWriter(new File(spath));
+		BufferedWriter bw = new BufferedWriter(fw);
+		for (int i = 0; i < ob.length; i++) {
+			MyOrderedList<Integer> list = (MyOrderedList<Integer>) ob[i];
+			Node temp = list.getHead();
+			while (temp != null) {
+				bw.write(String.valueOf(temp.data));
+				bw.write(" ");
+				temp = temp.next;
+			}
+		}
+		bw.close();
+		fw.close();
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void checkllist(int checkval, int check) {
+		// TODO Auto-generated method stub
+		MyOrderedList<Integer> list = (MyOrderedList<Integer>) ob[checkval];
+		int position = list.index(check);
+
+		if (list.search(check)) {
+			list.DeleteAt(position);
+			System.out.println(" at position " + position + " on Stack " + checkval + " deleted sucessfully");
+		} else {
+			list.insert(check);
+			System.out.println("Add sucessfully");
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static void main(String[] args) {
+		HashingStack t = new HashingStack();
+		try {
+			t.OrderdFileRW("/home/admin1/Desktop/demo.txt");
+			t.Filewrite("/home/admin1/Desktop/demo.txt");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+}

@@ -1,0 +1,45 @@
+package com.Bridgelab.Felloship.datastructure;
+
+@SuppressWarnings("unused")
+public class Deque<T> {
+	linkedlist<T> dequeue = new linkedlist<T>();;
+
+	/*
+	 * public void Deque() { dequeue = new linkedlist<T>(); }
+	 */
+	public void addFront(T data) {
+		dequeue.insertAt(data, 0);
+	}
+
+	public void addrear(T data) {
+		dequeue.insert(data);
+	}
+
+	public void removeFront() {
+		dequeue.DeleteAt(0);
+	}
+
+	public void removeRear() {
+		dequeue.DeleteAt(dequeue.size()-1);
+	}
+
+	public boolean isEmpty() {
+		return dequeue.isEmpty();
+	}
+
+	public int size() {
+		return dequeue.size();
+	}
+
+	public T peek(int location) {
+		return dequeue.peek(location);
+	}
+
+	public int getposition() {
+		return dequeue.position;
+	}
+
+	public void show() {
+		dequeue.show();
+	}
+}

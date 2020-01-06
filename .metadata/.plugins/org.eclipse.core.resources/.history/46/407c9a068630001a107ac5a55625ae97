@@ -1,0 +1,36 @@
+package com.Bridgelab.Felloship.oops;
+
+import org.json.simple.JSONObject;
+
+@SuppressWarnings({ "unused", "deprecation" })
+public class Person {
+	String FirstName;
+	String LastName;
+	String Address;
+	String State;
+	String City;
+	String zipcode;
+	String phone;
+	public Person(String firstName, String lastName, String address, String state, String city, String zipcode,
+			String phone) {
+		this.FirstName = firstName;
+		this.LastName = lastName;
+		this.Address = address;
+		this.State = state;
+		this.City = city;
+		this.zipcode = zipcode;
+		this.phone = phone;
+	}
+	@SuppressWarnings({ "unchecked" })
+	public JSONObject toJsonObject() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("FirstName", FirstName);
+		jsonObject.put("LastName", LastName);
+		jsonObject.put("address", Address);
+		jsonObject.put("state", State);
+		jsonObject.put("city", City);
+		jsonObject.put("zip-code", zipcode);
+		jsonObject.put("contact", phone);
+	return jsonObject;
+	}
+}

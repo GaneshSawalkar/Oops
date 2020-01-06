@@ -1,0 +1,40 @@
+package com.bridgelabz.felloship.inventory;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+import com.bridgelabz.felloship.control.operations;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JSONInventoryDataManagement {
+
+	public static void main(String[] args) throws IOException {
+		InventoryManager.pricemenu();
+
+		System.out.println("1: add\n" + "2: del\n" + "3: update\n" + "4: display\n"+ "5: exit");
+		int key = scanner.nextInt();
+		switch (key) {
+		case 1:
+			com.bridgelabz.felloship.operations.operations.add();
+			break;
+		case 2:
+			del();
+			break;
+		case 3:
+			update();
+			break;
+		case 4:
+			display();
+			break;
+		case 5:
+			 return;
+		default:
+			break;
+		}
+	}
+
+	
+}

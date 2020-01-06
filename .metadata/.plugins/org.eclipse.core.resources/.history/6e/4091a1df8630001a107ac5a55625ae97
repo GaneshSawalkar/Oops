@@ -1,0 +1,292 @@
+package com.Bridgelab.Felloship.datastructure;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Stack;
+
+import com.Bridgelab.Felloship.Utility.LinkedListUtility;
+import com.Bridgelab.Felloship.Utility.Utility;
+import com.Bridgelab.Felloship.datastructure.linkedlist.Node;
+
+public class StackList {
+	static int data = 0;
+	@SuppressWarnings("rawtypes")
+	static Node n = null;
+	static MyOrderedList<Integer> ol0 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol1 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol2 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol3 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol4 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol5 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol6 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol7 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol8 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol9 = new MyOrderedList<Integer>();
+	static MyOrderedList<Integer> ol10 = new MyOrderedList<Integer>();
+
+	public static void OrderdFileRW(String spath) throws IOException {
+		Stack<Integer> s = new Stack<Integer>();
+		for (int i = 0; i < 10; i++) {
+			s.add(i);
+		}
+		File fi = new File(spath);
+		BufferedReader in = new BufferedReader(new FileReader(fi));
+
+		String str[] = in.readLine().split(",");
+		System.out.println("read file..");
+		try {
+			for (int i = 0; i < str.length; i++) {
+				int temp = Integer.parseInt(str[i]);
+				ReturnList((temp % 11), temp);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		show();
+		Filewrite(spath);
+		in.close();
+	}
+
+	public static void Filewrite(String spath) throws IOException {
+		System.out.print(" enter the search integer : ");
+		int check = Utility.getInt();
+		int checkval = check % 11;
+		removedata(checkval, check);
+		try {
+			FileWriter fw = new FileWriter(new File(""));
+			for (int i = 0; i < 10; i++) {
+				Node<T> n = getData(i).getHead();
+				while (n != null) {
+					fw.write((int) n.data);
+					fw.write(",");
+					n = n.next;
+				}
+			}
+			fw.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	public static MyOrderedList<Integer> getData(int checkval) throws IOException {
+
+		switch (checkval) {
+		case 0:
+			return ol0;
+		case 1:
+			return ol1;
+		case 2:
+			return ol2;
+		case 3:
+			return ol3;
+		case 4:
+			return ol4;
+		case 5:
+			return ol5;
+		case 6:
+			return ol6;
+		case 7:
+			return ol7;
+		case 8:
+			return ol8;
+		case 9:
+			return ol9;
+		case 10:
+			return ol10;
+		default:
+			break;
+		}
+		return null;
+	}
+
+	public static void removedata(int key, int j) {
+		switch (key) {
+		case 0:
+			LinkedListUtility.showLLint();
+			int temp0 = ol0.index(j);
+			if (temp0 != -1) {
+				ol0.DeleteAt(temp0);
+			} else {
+				ol0.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 1:
+			int temp1 = ol1.index(j);
+			if (temp1 != -1) {
+				ol1.DeleteAt(temp1);
+			} else {
+				ol1.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 2:
+			int temp2 = ol2.index(j);
+			if (temp2 != -1) {
+				ol2.DeleteAt(temp2);
+			} else {
+				ol2.insert(j);
+				System.out.println("Added Successfully");
+			}
+
+			break;
+		case 3:
+			int temp3 = ol3.index(j);
+			if (temp3 != -1) {
+				ol3.DeleteAt(temp3);
+			} else {
+				ol3.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 4:
+			int temp4 = ol4.index(j);
+			if (temp4 != -1) {
+				ol4.DeleteAt(temp4);
+			} else {
+				ol4.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 5:
+			int temp5 = ol5.index(j);
+			if (temp5 != -1) {
+				ol5.DeleteAt(temp5);
+			} else {
+				ol5.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 6:
+			int temp6 = ol6.index(j);
+			if (temp6 != -1) {
+				ol6.DeleteAt(temp6);
+			} else {
+				ol6.insert(j);
+				System.out.println("Added Successfully");
+			}
+
+			break;
+		case 7:
+			int temp7 = ol7.index(j);
+			if (temp7 != -1) {
+				ol7.DeleteAt(temp7);
+			} else {
+				ol7.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 8:
+			int temp8 = ol8.index(j);
+			if (temp8 != -1) {
+				ol8.DeleteAt(temp8);
+			} else {
+				ol8.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 9:
+			int temp9 = ol9.index(j);
+			if (temp9 != -1) {
+				ol9.DeleteAt(temp9);
+			} else {
+				ol9.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+		case 10:
+			int temp10 = ol10.index(j);
+			if (temp10 != -1) {
+				ol10.DeleteAt(temp10);
+			} else {
+				ol10.insert(j);
+				System.out.println("Added Successfully");
+			}
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public static void ReturnList(int key, int data) {
+		switch (key) {
+		case 0:
+			ol0.insert(data);
+			break;
+		case 1:
+			ol1.insert(data);
+			break;
+		case 2:
+			ol2.insert(data);
+			break;
+		case 3:
+			ol3.insert(data);
+			break;
+		case 4:
+			ol4.insert(data);
+			break;
+		case 5:
+			ol5.insert(data);
+			break;
+		case 6:
+			ol6.insert(data);
+			break;
+		case 7:
+			ol7.insert(data);
+			break;
+		case 8:
+			ol8.insert(data);
+			break;
+		case 9:
+			ol9.insert(data);
+			break;
+		case 10:
+			ol10.insert(data);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public static void show() {
+		ol0.show();
+		System.out.println();
+		ol1.show();
+		System.out.println();
+		ol2.show();
+		System.out.println();
+		ol3.show();
+		System.out.println();
+
+		ol4.show();
+		System.out.println();
+
+		ol5.show();
+		System.out.println();
+
+		ol6.show();
+		System.out.println();
+
+		ol7.show();
+		System.out.println();
+
+		ol8.show();
+		System.out.println();
+
+		ol9.show();
+		System.out.println();
+		ol10.show();
+	}
+
+	public static void main(String[] args) throws IOException {
+
+		OrderdFileRW("/home/admin1/Desktop/demo.txt");
+
+	}
+}
