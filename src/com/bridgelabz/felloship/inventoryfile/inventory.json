@@ -1,0 +1,9 @@
+[ {
+  "name" : "basmati",
+  "price" : 154,
+  "weight" : 10
+}, {
+  "name" : "amaa",
+  "price" : 176,
+  "weight" : 10
+} ]
