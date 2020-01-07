@@ -1,0 +1,11 @@
+[ {
+  "doctorname" : "s.mehta",
+  "doctorId" : "145",
+  "specialization" : "bone",
+  "available" : "5Am"
+}, {
+  "doctorname" : "shaha",
+  "doctorId" : "146",
+  "specialization" : "eye",
+  "available" : "6am"
+} ]

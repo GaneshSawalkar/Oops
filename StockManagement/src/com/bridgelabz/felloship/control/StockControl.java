@@ -25,7 +25,7 @@ public class StockControl {
 	// transaction log read
 
 	public static List<TransactionLog> readlog() throws JsonParseException, JsonMappingException, IOException {
-		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/log.json";
+		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/log.json";
 		List<TransactionLog> users = mapper.readValue(new File(userpath), new TypeReference<List<TransactionLog>>() {
 		});
 		return users;
@@ -34,13 +34,13 @@ public class StockControl {
 	// transactions log write
 	public static void writelog(List<TransactionLog> logentry)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/log.json";
+		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/log.json";
 		mapper.writerWithDefaultPrettyPrinter().writeValue(new File(userpath), logentry);
 	}
 
 	// read users
 	public static List<StockUser> readusers() throws JsonParseException, JsonMappingException, IOException {
-		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/users.json";
+		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/users.json";
 		List<StockUser> users = mapper.readValue(new File(userpath), new TypeReference<List<StockUser>>() {
 		});
 		return users;
@@ -49,13 +49,13 @@ public class StockControl {
 	// writes users
 	public static void writeusers(List<StockUser> newentry)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/users.json";
+		String userpath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/users.json";
 		mapper.writerWithDefaultPrettyPrinter().writeValue(new File(userpath), newentry);
 	}
 
 	// red stock info
-	public static List<stockmodel> readStock(String spath)
-			throws JsonParseException, JsonMappingException, IOException {
+	public static List<stockmodel> readStock(String spat) throws JsonParseException, JsonMappingException, IOException {
+		String spath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/stockinventory.json";
 		List<stockmodel> list = mapper.readValue(new File(spath), new TypeReference<List<stockmodel>>() {
 		});
 		return list;
@@ -64,7 +64,7 @@ public class StockControl {
 	// write stock info
 	public static void writeStock(List<stockmodel> list)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		String spath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/stockinventory.json";
+		String spath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/datafiles/stockinventory.json";
 		mapper.writerWithDefaultPrettyPrinter().writeValue(new File(spath), list);
 	}
 }
