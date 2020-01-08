@@ -15,25 +15,43 @@ public class operationDoctor {
 		list = Control.readDoctortFile();
 	}
 
-	public static void SearchBy() throws JsonParseException, JsonMappingException, IOException {
+	public static List<Doctor> AddDoctor(List<Doctor> lists)
+			throws JsonParseException, JsonMappingException, IOException {
+		operationDoctor.ShowDoctors();
+		Doctor newDoctorentry = new Doctor();
+		System.out.println("new doctor name: ");
+		newDoctorentry.setDoctorname(Operations.isStringInput(Operations.scanner.next()));
+		System.out.println("new doctor id: ");
+		newDoctorentry.setDoctorId(Operations.isNumeric(Operations.scanner.next()));
+		System.out.println("enter new doctor Specialities: ");
+		newDoctorentry.setSpecialization(Operations.isStringInput(Operations.scanner.next()));
+		System.out.println("enter new doctor timing: Am/Pm");
+		newDoctorentry.setAvailable(Operations.scanner.next());
+
+		lists.add(newDoctorentry);
+		return lists;
+
+	}
+
+	public static void SearchDoctorBy() throws JsonParseException, JsonMappingException, IOException {
 		System.out.println("1-Id\n2-Name\n3-specilization\n4-availabel\n");
 		int choice = Operations.scanner.nextInt();
 		switch (choice) {
 		case 1:
 			System.out.println("enter the doctor Id");
-			SearchById();
+			SearchDoctor();
 			break;
 		case 2:
 			System.out.println("enter the doctor Name");
-			SearchByName();
+			SearchDoctor();
 			break;
 		case 3:
 			System.out.println("enter the doctor specilization");
-			SearchBySpecial();
+			SearchDoctor();
 			break;
 		case 4:
 			System.out.println("enter the doctor Time");
-			SearchBytime();
+			SearchDoctor();
 			break;
 		default:
 
@@ -41,14 +59,15 @@ public class operationDoctor {
 		}
 	}
 
-	public static void SearchBytime() throws JsonParseException, JsonMappingException, IOException {
+	public static void SearchDoctor() throws JsonParseException, JsonMappingException, IOException {
 		List<Doctor> lists = Control.readDoctortFile();
 		String input = Operations.scanner.next();
 		boolean find = false;
 		for (Doctor doctor : lists) {
-			if (doctor.getAvailable().equals(input)) {
+			if (doctor.getDoctorId().equals(input) || doctor.getAvailable().equals(input)
+					|| doctor.getDoctorname().equals(input) || doctor.getSpecialization().equals(input)) {
 				find = true;
-				showlist(doctor);
+				show(doctor);
 			}
 
 		}
@@ -58,74 +77,21 @@ public class operationDoctor {
 
 	}
 
-	public static void SearchBySpecial() throws JsonParseException, JsonMappingException, IOException {
-		List<Doctor> lists = Control.readDoctortFile();
-		String input = Operations.scanner.next();
-		boolean find = false;
-		for (Doctor doctor : lists) {
-			if (doctor.getSpecialization().equals(input)) {
-				find = true;
-				showlist(doctor);
-			}
-
-		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
-
-	}
-
-	public static void SearchByName() throws JsonParseException, JsonMappingException, IOException {
-		List<Doctor> lists = Control.readDoctortFile();
-		String input = Operations.scanner.next();
-		boolean find = false;
-		for (Doctor doctor : lists) {
-			if (doctor.getDoctorname().equals(input)) {
-				find = true;
-				showlist(doctor);
-			}
-
-		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
-
-	}
-
-	public static void SearchById() throws JsonParseException, JsonMappingException, IOException {
-		List<Doctor> lists = Control.readDoctortFile();
-		String input = Operations.scanner.next();
-		boolean find = false;
-		for (Doctor doctor : lists) {
-			if (doctor.getDoctorId().equals(input)) {
-				find = true;
-				showlist(doctor);
-			}
-
-		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
-
-	}
-	
-	
-	
-	
-
-	public static void showlist(Doctor doctor) {
-		System.out.println(doctor.getDoctorname() + " " + doctor.getSpecialization() + " " + doctor.getAvailable());
+	public static void show(Doctor doctor) {
+		System.out.println("Id: " + doctor.getDoctorId() + "\nName: " + doctor.getDoctorname() + "\nSpecilization"
+				+ doctor.getSpecialization() + "\nTiming: " + doctor.getAvailable());
 
 	}
 
 	public static void ShowDoctors() throws JsonParseException, JsonMappingException, IOException {
 		List<Doctor> list = Control.readDoctortFile();
+		System.out.println("********************************");
+
 		for (Doctor doctor : list) {
-			System.out.println(doctor.getDoctorId() + " " + doctor.getDoctorname() + " " + doctor.getSpecialization()
-					+ " " + doctor.getAvailable());
+			show(doctor);
+			System.out.println("********************************");
+
 		}
 	}
-
-	
 
 }

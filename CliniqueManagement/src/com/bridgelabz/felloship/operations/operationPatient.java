@@ -15,77 +15,88 @@ public class operationPatient {
 		list = Control.readPatientFile();
 	}
 
+	public static List<Patients> AddPatient(List<Patients> lists)
+			throws JsonParseException, JsonMappingException, IOException {
+
+		Patients newpatients = new Patients();
+		System.out.print("enter the name of patient: ");
+		newpatients.setPatientName(Operations.isStringInput(Operations.scanner.next()));
+		System.out.println("enter the id");
+		newpatients.setPatientId(Operations.isNumeric(Operations.scanner.next()));
+		System.out.println("enter contact number : ");
+		newpatients.setContactNumber(Operations.isNumeric(Operations.scanner.next()));
+		System.out.println("enter age of patient: ");
+		newpatients.setAge(Operations.scanner.nextInt());
+
+		lists.add(newpatients);
+		return lists;
+	}
+
 	public static void searchpatient() throws JsonParseException, JsonMappingException, IOException {
 		System.out.println("1-id\n2-name\n3-contact");
 		int ch = Operations.scanner.nextInt();
 		switch (ch) {
 		case 1:
-			searchPatientbyid();
+			System.out.println("enter Patient id: ");
+			String inputid = Operations.scanner.next();
+			searchPatient(inputid);
 			break;
 		case 2:
-			searchPatientbyname();
+			System.out.println("enter Patient name: ");
+			String inputname = Operations.scanner.next();
+			searchPatient(inputname);
 			break;
 		case 3:
-			searchPatientbycontact();
+			System.out.println("enter Patient contact: ");
+			String inputcontact = Operations.scanner.next();
+			searchPatient(inputcontact);
 			break;
 		default:
 			break;
 		}
 	}
 
-	private static void searchPatientbyid() throws JsonParseException, JsonMappingException, IOException {
+	private static void searchPatient(String input) throws JsonParseException, JsonMappingException, IOException {
 		List<Patients> list = Control.readPatientFile();
-		System.out.println("enter input: ");
-		String input = Operations.scanner.next();
-		boolean find = false;
-		for (Patients patients : list) {
-			if (patients.getPatientId().equals(input)) {
-				find = true;
-				Showdata(patients);
+		if (!ischeck(input)) {
+			System.out.println("this doctor not in this clinique");
+		} else {
+			System.out.println("********************************");
+
+			for (Patients patients : list) {
+				if (patients.getContactNumber().equals(input) || patients.getPatientName().equals(input)
+						|| patients.getPatientId().equals(input)) {
+					Show(patients);
+				}
 			}
 		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
+	}
+
+	private static void Show(Patients patients) {
+		System.out.println("Patient Name: " + patients.getPatientName() + "\nPatientId: " + patients.getAge()
+				+ "\nPatient Contact: " + patients.getContactNumber());
+		System.out.println("********************************");
 
 	}
 
-	private static void searchPatientbyname() throws JsonParseException, JsonMappingException, IOException {
+	public static void ShowAllPatients() throws JsonParseException, JsonMappingException, IOException {
 		List<Patients> list = Control.readPatientFile();
-		System.out.println("enter input: ");
-		String input = Operations.scanner.next();
-		boolean find = false;
+		System.out.println("********************************");
 		for (Patients patients : list) {
-			if (patients.getPatientName().equals(input)) {
-				find = true;
-				Showdata(patients);
+			Show(patients);
+		}
+	}
+
+	public static boolean ischeck(String input) throws JsonParseException, JsonMappingException, IOException {
+		List<Patients> patientlist = Control.readPatientFile();
+
+		for (Patients patients : patientlist) {
+			if (patients.getContactNumber().equals(input) || patients.getPatientName().equals(input)
+					|| patients.getPatientId().equals(input)) {
+				return true;
 			}
 		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
-
+		return false;
 	}
 
-	private static void searchPatientbycontact() throws JsonParseException, JsonMappingException, IOException {
-		List<Patients> list = Control.readPatientFile();
-		System.out.println("enter input: ");
-		String input = Operations.scanner.next();
-		boolean find = false;
-		for (Patients patients : list) {
-			if (patients.getContactNumber().equals(input)) {
-				find = true;
-				Showdata(patients);
-			}
-		}
-		if (!find) {
-			System.out.println("this doctor not in this clinique");
-		}
-
-	}
-
-	private static void Showdata(Patients patients) {
-		System.out.println(patients.getPatientName() + " " + patients.getAge() + " " + patients.getContactNumber());
-		;
-	}
 }

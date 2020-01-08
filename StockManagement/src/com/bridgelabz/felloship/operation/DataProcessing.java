@@ -34,6 +34,7 @@ public class DataProcessing {
 				break;
 			case 2:
 				// Remove User
+				displayAllusers();
 				removeuser();
 				break;
 
@@ -50,6 +51,15 @@ public class DataProcessing {
 				break;
 			}
 		} while (key != 5);
+	}
+
+	public static void displayAllusers() throws JsonParseException, JsonMappingException, IOException {
+		List<StockUser> list = StockControl.readusers();
+		System.out.println("***********************************");
+		for (StockUser stockUser : list) {
+			System.out.println("Username: " + stockUser.getUsername() + "\nTotal shares: " + stockUser.getShare());
+		System.out.println("***********************************");
+		}
 	}
 
 	// users transactions buy and sales shares.
@@ -114,6 +124,7 @@ public class DataProcessing {
 	// remove existing users.
 	private static void removeuser() throws JsonParseException, JsonMappingException, IOException {
 //read data
+
 		List<StockUser> user = StockControl.readusers();
 
 		System.out.println();
@@ -163,7 +174,7 @@ public class DataProcessing {
 			if (stockUser.getUsername().equalsIgnoreCase(username)) {
 				System.out.println("enter company symbol");
 				String inputsymbol = sc.next();
-
+				DataProcessing.displayAllusers();
 				String spath = StockOperations.spath;
 
 				List<stockmodel> list = StockControl.readStock(spath);
@@ -193,9 +204,7 @@ public class DataProcessing {
 				StockControl.writeusers(user);
 				StockControl.writeStock(list);
 
-			} else {
-				System.out.println("your are not authorised user\nplease register your self....");
-			}
+			} 
 		}
 
 	}

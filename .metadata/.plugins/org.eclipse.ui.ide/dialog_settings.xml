@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/admin1/Desktop/ganeshproject/InventoryManagment"/>
+		<item value="/home/admin1/Desktop/ganeshproject/com.bridgelbz.felloship.addressbook"/>
+		<item value="/home/admin1/Desktop/JavaProject/StockManagement"/>
+		<item value="/home/admin1/Desktop/JavaProject/StockAccountManagement"/>
+		<item value="/home/admin1/Desktop/JavaProject/InventoryManagment"/>
 		<item value="/home/admin1/Desktop/project"/>
 		<item value="/home/admin1/Documents/ganeshproject"/>
 		<item value="/home/admin1/Desktop/ganeshproject/src/com"/>

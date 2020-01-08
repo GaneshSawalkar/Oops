@@ -1,41 +1,31 @@
 [ {
-  "patientname" : "amit",
+  "patientname" : "djhx",
   "doctorname" : "shaha",
   "appointment" : 1,
-  "date" : 1578401202218
+  "date" : 1578462753634
 }, {
-  "patientname" : "bcxsah",
+  "patientname" : "dzchnzuj",
   "doctorname" : "shaha",
   "appointment" : 2,
-  "date" : 1578401803293
+  "date" : 1578462758053
 }, {
-  "patientname" : "dzxnuc",
+  "patientname" : "dzbcfkzj",
   "doctorname" : "shaha",
   "appointment" : 3,
-  "date" : 1578401814372
+  "date" : 1578462761787
 }, {
-  "patientname" : "sjhcdsj",
+  "patientname" : "djxhcj",
   "doctorname" : "shaha",
   "appointment" : 4,
-  "date" : 1578401819077
+  "date" : 1578462765026
 }, {
-  "patientname" : "sbhcfukjjn",
+  "patientname" : "bsdxh",
   "doctorname" : "shaha",
   "appointment" : 5,
-  "date" : 1578401822764
+  "date" : 1578462817094
 }, {
-  "patientname" : "shadasj",
-  "doctorname" : "s.mehta",
-  "appointment" : 1,
-  "date" : 1578401986555
-}, {
-  "patientname" : "meena",
-  "doctorname" : "s.mehta",
-  "appointment" : 2,
-  "date" : 1578403883163
-}, {
-  "patientname" : "hema",
+  "patientname" : "akshara",
   "doctorname" : "shaha",
-  "appointment" : 6,
-  "date" : 1578490376927
+  "appointment" : 1,
+  "date" : 1578569088608
 } ]

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class StockOperations {
-	public static String userpath = "/home/admin1/Desktop/JavaProject/StockAccountManagement/src/com/bridgelabz/felloship/users.json";
 	public static String spath = "/home/admin1/Desktop/JavaProject/StockAccountManagement/src/com/bridgelabz/felloship/stockinventory.json";
 	static List<stockmodel> list;
 	static Scanner scanner = new Scanner(System.in);
@@ -27,11 +26,14 @@ public class StockOperations {
 			ch = scanner.nextInt();
 			switch (ch) {
 			case 1:
-				AddStock();
+				Displaystock();
+			//	AddStock();
 				System.out.println("Added: ");
 				Displaystock();
+
 				break;
 			case 2:
+				Displaystock();
 				deleteStock();
 				System.out.println("Deleted: ");
 				Displaystock();

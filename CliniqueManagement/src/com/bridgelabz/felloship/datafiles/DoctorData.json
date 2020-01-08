@@ -1,11 +1,11 @@
 [ {
   "doctorname" : "s.mehta",
-  "doctorId" : "145",
+  "doctorId" : "Id145",
   "specialization" : "bone",
   "available" : "5Am"
 }, {
   "doctorname" : "shaha",
-  "doctorId" : "146",
+  "doctorId" : "Id146",
   "specialization" : "eye",
-  "available" : "6am"
+  "available" : "6pm"
 } ]

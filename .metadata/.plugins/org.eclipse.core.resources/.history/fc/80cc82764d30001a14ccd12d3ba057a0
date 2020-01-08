@@ -1,8 +1,0 @@
-package com.bridgelabz.felloship.model;
-
-public class StockUser {
-String username;
-String usercontact;
-String useraddress;
-String userage;
-}

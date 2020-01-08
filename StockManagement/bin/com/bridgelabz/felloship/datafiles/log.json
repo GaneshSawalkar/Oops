@@ -54,4 +54,20 @@
   "companyshares" : 2,
   "shareprice" : 124,
   "date" : 1578315476654
+}, {
+  "transction" : "buy",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 5,
+  "shareprice" : 434,
+  "date" : 1578479550731
+}, {
+  "transction" : "sale",
+  "username" : "ganesh",
+  "companysymbol" : "@",
+  "companyname" : "Amparsand",
+  "companyshares" : 5,
+  "shareprice" : 124,
+  "date" : 1578479634835
 } ]

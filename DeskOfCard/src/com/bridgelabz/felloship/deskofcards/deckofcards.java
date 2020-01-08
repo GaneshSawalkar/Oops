@@ -15,6 +15,7 @@ public class deckofcards {
 		System.out.println("Amount of cards to distribute " + operations.players + " players");
 		operations.playcards = sc.nextInt();
 		operations.playerscards();
+		
 		//show players cards
 		 operations.showPlayersCard();
 		//System.out.println(operations.check);

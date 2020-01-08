@@ -3,4 +3,14 @@
   "patientId" : "151",
   "contactNumber" : "5641654541",
   "age" : 22
+}, {
+  "patientName" : "maya",
+  "patientId" : "123",
+  "contactNumber" : "18415415",
+  "age" : 16
+}, {
+  "patientName" : "Akshara",
+  "patientId" : "123",
+  "contactNumber" : "1654684545",
+  "age" : 26
 } ]

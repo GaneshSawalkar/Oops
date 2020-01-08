@@ -27,22 +27,20 @@ public class StockOperations {
 			ch = scanner.nextInt();
 			switch (ch) {
 			case 1:
+				Displaystock();
 				AddStock();
 				System.out.println("Added: ");
 				Displaystock();
 				break;
 			case 2:
 				deleteStock();
-				System.out.println("Deleted: ");
 				Displaystock();
 				break;
 			case 3:
 				updatestock();
-				System.out.println("Updated: ");
 				Displaystock();
 				break;
 			case 4:
-
 				Displaystock();
 				break;
 			case 5:
@@ -70,13 +68,17 @@ public class StockOperations {
 	private static void SearchStock() throws JsonParseException, JsonMappingException, IOException {
 		System.out.println("enter comapny symbol");
 		String inputsymbol = scanner.next();
+		boolean find = false;
 		list = StockControl.readStock(spath);
 		for (stockmodel stockmodel : list) {
 			if (stockmodel.companysymbol.equals(inputsymbol)) {
+				find = true;
 				getstock(stockmodel);
 			}
 		}
-
+		if (!find) {
+			System.out.println("not in stock");
+		}
 	}
 
 	public static void AddStock() throws JsonGenerationException, JsonMappingException, IOException {
@@ -98,12 +100,16 @@ public class StockOperations {
 		StockControl.writeStock(newlist);
 	}
 
-	public static void updatestock() {
+	public static void updatestock() throws JsonParseException, JsonMappingException, IOException {
+		Displaystock();
+
 		System.out.println("enter symbol");
 		String inputsymbol = scanner.next();
+		boolean find = false;
 		for (stockmodel stockmodel : list) {
 
 			if (stockmodel.companysymbol.equals(inputsymbol)) {
+				find = true;
 				System.out.println("enter choice");
 				int ch = scanner.nextInt();
 				switch (ch) {
@@ -120,6 +126,12 @@ public class StockOperations {
 				}
 			}
 		}
+		if (find) {
+			System.out.println("not in stock ");
+
+		} else {
+			System.out.println("Deleted: ");
+		}
 	}
 
 	private static void deleteStock() throws JsonParseException, JsonMappingException, IOException {
@@ -128,11 +140,19 @@ public class StockOperations {
 		System.out.println("enter comapny symbol");
 		String inputsymbol = scanner.next();
 		list = StockControl.readStock(spath);
+		boolean find = false;
 		for (stockmodel stockmodel : list) {
 			if (stockmodel.companysymbol.equals(inputsymbol)) {
+				find = true;
 				list.remove(stockmodel);
 				break;
 			}
+		}
+		if (!find) {
+			System.out.println("not in stock");
+		} else {
+			System.out.println("Deleted: ");
+
 		}
 		StockControl.writeStock(list);
 
