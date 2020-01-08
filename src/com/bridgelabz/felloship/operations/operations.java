@@ -13,21 +13,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class operations {
 
-	public static String spath = "/home/admin1/Desktop/inventory.json";
-	static Scanner scanner = new Scanner(System.in);
+	// public static String spath = "/home/admin1/Desktop/inventory.json";
+	public static Scanner scanner = new Scanner(System.in);
 	static ObjectMapper mapper = new ObjectMapper();
 
 	public static void del() throws IOException {
-		List<Product> list = control.read();
+		List<Product> lists = control.read();
 		System.out.println("enter product name: ");
 		String inputname = scanner.next();
-		for (Product product : list) {
-			if (product.name.equals(inputname)) {
-				continue;
+		try {
+			for (Product product : lists) {
+				if (product.name.equals(inputname)) {
+					lists.remove(product);
+				}
 			}
-			list.add(product);
+		} catch (Exception e) {
 		}
-		control.write(list);
+		control.write(lists);
 	}
 
 	public static void update() throws IOException {
@@ -36,7 +38,7 @@ public class operations {
 		String inputname = scanner.next();
 		for (Product product : list) {
 			if (product.name.equals(inputname)) {
-				System.out.println("1.product\n " + "2. price\n" + "3. weight");
+				System.out.println("1. Product Name\n" + "2. Price\n" + "3. Weight");
 				int choice = scanner.nextInt();
 				switch (choice) {
 				case 1:
@@ -61,13 +63,15 @@ public class operations {
 	}
 
 	public static void add() throws JsonGenerationException, JsonMappingException, IOException {
-
 		List<Product> array = control.read();
+		System.out.println("enter the product");
+		String product = scanner.next();
 		System.out.print("enter product sub types: ");
 		int productsubtypes = scanner.nextInt();
 		for (int i = 0; i < productsubtypes; i++) {
 			Product p = new Product();
-			System.out.println("enter the name");
+			p.setType(product);
+			System.out.println("enter the sub type" + (i + 1) + " product name");
 			p.setName(scanner.next());
 			System.out.println("enter the Weight: ");
 			p.setWeight(scanner.nextInt());

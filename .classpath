@@ -6,9 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/admin1/Desktop/JavaProject/InventoryManagment/jar/jackson-annotations-2.9.8.jar"/>
-	<classpathentry kind="lib" path="/home/admin1/Desktop/JavaProject/InventoryManagment/jar/jackson-core-2.9.8.jar"/>
-	<classpathentry kind="lib" path="/home/admin1/Desktop/JavaProject/InventoryManagment/jar/jackson-databind-2.9.8.jar"/>
-	<classpathentry kind="lib" path="/home/admin1/Desktop/JavaProject/InventoryManagment/jar/jackson-mapper-0.0.2.0.jar"/>
+	<classpathentry kind="lib" path="/home/admin1/Desktop/ganeshproject/InventoryManagment/jar/jackson-annotations-2.9.8.jar"/>
+	<classpathentry kind="lib" path="/home/admin1/Desktop/ganeshproject/InventoryManagment/jar/jackson-core-2.9.8.jar"/>
+	<classpathentry kind="lib" path="/home/admin1/Desktop/ganeshproject/InventoryManagment/jar/jackson-databind-2.9.8.jar"/>
+	<classpathentry kind="lib" path="/home/admin1/Desktop/ganeshproject/InventoryManagment/jar/jackson-mapper-0.0.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

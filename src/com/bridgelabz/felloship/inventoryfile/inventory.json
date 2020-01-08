@@ -1,9 +1,21 @@
 [ {
+  "type" : "rice",
   "name" : "basmati",
   "price" : 154,
   "weight" : 10
 }, {
-  "name" : "amaa",
-  "price" : 176,
+  "type" : "corn",
+  "name" : "desi",
+  "price" : 120,
+  "weight" : 10
+}, {
+  "type" : "corn",
+  "name" : "punjabi",
+  "price" : 60,
+  "weight" : 10
+}, {
+  "type" : "wheat",
+  "name" : "rajstani",
+  "price" : 415,
   "weight" : 10
 } ]
