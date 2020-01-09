@@ -1,39 +1,36 @@
 package com.bridgelabz.felloship.operations;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.bridgelabz.felloship.control.Control;
 import com.bridgelabz.felloship.model.Doctor;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class operationDoctor {
 	static List<Doctor> list;
 
-	public operationDoctor() throws JsonParseException, JsonMappingException, IOException {
-		list = Control.readDoctortFile();
+	public operationDoctor() {
+		list = Control.readDoctortFile(); // read doctor file
 	}
 
-	public static List<Doctor> AddDoctor(List<Doctor> lists)
-			throws JsonParseException, JsonMappingException, IOException {
+	// new doctor entry
+	public static List<Doctor> AddDoctor(List<Doctor> lists) {
 		operationDoctor.ShowDoctors();
 		Doctor newDoctorentry = new Doctor();
-		System.out.println("new doctor name: ");
+		System.out.println("new doctor name: "); // set doctor name
 		newDoctorentry.setDoctorname(Operations.isStringInput(Operations.scanner.next()));
-		System.out.println("new doctor id: ");
+		System.out.println("new doctor id: "); // set doctor id
 		newDoctorentry.setDoctorId(Operations.isNumeric(Operations.scanner.next()));
-		System.out.println("enter new doctor Specialities: ");
+		System.out.println("enter new doctor specialization: "); // set doctor specialization
 		newDoctorentry.setSpecialization(Operations.isStringInput(Operations.scanner.next()));
-		System.out.println("enter new doctor timing: Am/Pm");
+		System.out.println("enter new doctor timing: Am/Pm"); // set doctor in time
 		newDoctorentry.setAvailable(Operations.scanner.next());
 
-		lists.add(newDoctorentry);
-		return lists;
+		lists.add(newDoctorentry); // add in list
+		return lists; // return updated list
 
 	}
 
-	public static void SearchDoctorBy() throws JsonParseException, JsonMappingException, IOException {
+	public static void SearchDoctorBy() {
 		System.out.println("1-Id\n2-Name\n3-specilization\n4-availabel\n");
 		int choice = Operations.scanner.nextInt();
 		switch (choice) {
@@ -59,11 +56,11 @@ public class operationDoctor {
 		}
 	}
 
-	public static void SearchDoctor() throws JsonParseException, JsonMappingException, IOException {
-		List<Doctor> lists = Control.readDoctortFile();
+	public static void SearchDoctor() {
+		List<Doctor> lists = Control.readDoctortFile(); // Received all doctors list
 		String input = Operations.scanner.next();
 		boolean find = false;
-		for (Doctor doctor : lists) {
+		for (Doctor doctor : lists) { // show doctor info by user input
 			if (doctor.getDoctorId().equals(input) || doctor.getAvailable().equals(input)
 					|| doctor.getDoctorname().equals(input) || doctor.getSpecialization().equals(input)) {
 				find = true;
@@ -71,19 +68,21 @@ public class operationDoctor {
 			}
 
 		}
-		if (!find) {
+		if (!find) { // false if doctor not in list
 			System.out.println("this doctor not in this clinique");
 		}
 
 	}
 
+	// show doctors details
 	public static void show(Doctor doctor) {
 		System.out.println("Id: " + doctor.getDoctorId() + "\nName: " + doctor.getDoctorname() + "\nSpecilization"
 				+ doctor.getSpecialization() + "\nTiming: " + doctor.getAvailable());
 
 	}
 
-	public static void ShowDoctors() throws JsonParseException, JsonMappingException, IOException {
+	// show all docrtors
+	public static void ShowDoctors() {
 		List<Doctor> list = Control.readDoctortFile();
 		System.out.println("********************************");
 

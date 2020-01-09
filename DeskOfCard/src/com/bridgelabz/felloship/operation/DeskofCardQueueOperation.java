@@ -62,13 +62,13 @@ public class DeskofCardQueueOperation {
 				int card = generteRandomCards();
 				input[j] = card;
 			}
-			sort();
+			sort(); // get sorted random cards number
 			for (int card : input) {
 				list.enqueue(carddesk[card]);
 			}
 
 		}
-		showPlayersCard();
+		showPlayersCard(); // show sorted cards
 
 	}
 
@@ -81,7 +81,7 @@ public class DeskofCardQueueOperation {
 		return card;
 	}
 
-	public static void sort() {
+	public static void sort() { // sort card array of player
 		for (int i = 0; i < input.length; i++) {
 			for (int j = i + 1; j < input.length; j++) {
 				if (input[i] > input[j]) {

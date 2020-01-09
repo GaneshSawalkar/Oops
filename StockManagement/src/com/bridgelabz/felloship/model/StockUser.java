@@ -1,6 +1,7 @@
 package com.bridgelabz.felloship.model;
 
 public class StockUser {
+	// Users model
 	String username;
 	int share;
 

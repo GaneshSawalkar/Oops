@@ -6,46 +6,42 @@ public class Queue<T> {
 
 	linkedlist<T> queue = new linkedlist<T>();
 
-	/*
-	 * public void Queue() { queue = new linkedlist<T>(); }
-	 */
-
 	public void enqueue(T j) {
-		queue.insert(j);
+		queue.insert(j); // add node
 	}
 
 	public void dequeue() {
-		queue.DeleteAt(0);
+		queue.DeleteAt(0); // delete first node
 	}
 
 	public T Dequeue() {
-		return queue.pop(0);
+		return queue.pop(0); // delete first node
 	}
 
 	public T peek() {
-		return queue.peek(0);
+		return queue.peek(0); // get first node value
 	}
 
 	public T peekpop() {
-		return queue.peekQueue(1);
+		return queue.peekQueue(0); // get first node value and pop it
 	}
 
 	public boolean isEmpty() {
-		return queue.isEmpty();
+		return queue.isEmpty(); // check is empty or not
 	}
 
 	public int sizeQ() {
-		return queue.size();
+		return queue.size(); // size of queue
 	}
 
 	public void show() {
-		queue.show();
+		queue.show(); // show queue
 
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Node head() {
-		return queue.getHead();
+		return queue.getHead(); // get queue head position
 	}
 
 }

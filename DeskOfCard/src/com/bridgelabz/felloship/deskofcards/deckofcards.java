@@ -11,14 +11,13 @@ public class deckofcards {
 	public static void main(String[] args) {
 
 		System.out.println("enter numbers of players");
-		operations.players = sc.nextInt();
+		operations.players = sc.nextInt(); // numbers of players
 		System.out.println("Amount of cards to distribute " + operations.players + " players");
-		operations.playcards = sc.nextInt();
+		operations.playcards = sc.nextInt(); // numbers of cards for each player
+
 		operations.playerscards();
-		
-		//show players cards
-		 operations.showPlayersCard();
-		//System.out.println(operations.check);
+		operations.showPlayersCard();
+
 	}
 
 }

@@ -1,22 +1,18 @@
 package com.bridgelabz.felloship.operation;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.bridgelabz.felloship.control.*;
 import com.bridgelabz.felloship.model.stockmodel;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class StockOperations {
 	public static String spath = "/home/admin1/Desktop/JavaProject/StockAccountManagement/src/com/bridgelabz/felloship/stockinventory.json";
 	static List<stockmodel> list;
 	static Scanner scanner = new Scanner(System.in);
 
-	public static void stockmenu() throws JsonParseException, JsonMappingException, IOException {
+	public static void stockmenu() {
 		int ch;
 		do {
 			System.out.println("*****************Menu******************");
@@ -27,7 +23,7 @@ public class StockOperations {
 			switch (ch) {
 			case 1:
 				Displaystock();
-			//	AddStock();
+				// AddStock();
 				System.out.println("Added: ");
 				Displaystock();
 
@@ -62,7 +58,7 @@ public class StockOperations {
 		} while (ch != 6);
 	}
 
-	private static void SearchStock() throws JsonParseException, JsonMappingException, IOException {
+	private static void SearchStock() {
 		System.out.println("enter comapny symbol");
 		String inputsymbol = scanner.next();
 		list = StockControl.readStock(spath);
@@ -80,7 +76,8 @@ public class StockOperations {
 		System.out.println();
 	}
 
-	private static void AddStock() throws JsonGenerationException, JsonMappingException, IOException {
+	@SuppressWarnings("unused")
+	private static void AddStock() {
 		List<stockmodel> newlist = new ArrayList<stockmodel>();
 		list = StockControl.readStock(spath);
 		for (stockmodel stockmodel : list) {
@@ -100,7 +97,7 @@ public class StockOperations {
 		StockControl.writeStock(newlist);
 	}
 
-	private static void updatestock() throws JsonParseException, JsonMappingException, IOException {
+	private static void updatestock() {
 		list = StockControl.readStock(spath);
 		System.out.println("enter symbol");
 		String inputsymbol = scanner.next();
@@ -126,7 +123,7 @@ public class StockOperations {
 		}
 	}
 
-	private static void deleteStock() throws JsonParseException, JsonMappingException, IOException {
+	private static void deleteStock() {
 		Displaystock();
 
 		System.out.println("enter comapny symbol");
@@ -142,7 +139,7 @@ public class StockOperations {
 
 	}
 
-	private static void Displaystock() throws JsonParseException, JsonMappingException, IOException {
+	private static void Displaystock() {
 		list = StockControl.readStock(spath);
 		System.out.println("*******Stock Market********");
 		for (stockmodel stockmodel : list) {

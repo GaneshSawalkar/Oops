@@ -12,6 +12,7 @@ public class linkedlist<T> {
 		position = -1;
 	}
 
+	// insert new node
 	public void insert(T data) {
 		Node<T> node = new Node<T>(data);
 
@@ -26,6 +27,7 @@ public class linkedlist<T> {
 		position++;
 	}
 
+	// delete new node using index value
 	public T pop(int location) {
 		Node<T> tc = head;
 		Node<T> tp = null;
@@ -49,6 +51,7 @@ public class linkedlist<T> {
 		}
 	}
 
+	// insert node at using index value
 	public void insertAt(T data, int index) {
 		Node<T> node = new Node<T>(data);
 		if (index == 0) {
@@ -66,6 +69,7 @@ public class linkedlist<T> {
 		}
 	}
 
+	// peek node using index
 	public T peek(int location) {
 		Node<T> n = head;
 		int tempPosition = 0;
@@ -76,17 +80,21 @@ public class linkedlist<T> {
 		return n.data;
 	}
 
+	// check is empty or not
 	public boolean isEmpty() {
 		Node<T> n = head;
 		if (n == null)
-			return true;
-		return false;
+			return true; // not empty list
+
+		return false; // empty list
 	}
 
+	// show list of size (position)
 	public int size() {
 		return position + 1;
 	}
 
+	// reverse linked list recursively
 	public void RecursiveReverseList(Node<T> n) {
 		if (n.next == null) {
 			head = n;
@@ -98,6 +106,7 @@ public class linkedlist<T> {
 		n.next = null;
 	}
 
+	// remove node
 	public T pop() {
 		return pop(position);
 	}
@@ -125,6 +134,7 @@ public class linkedlist<T> {
 		temp.next = next;
 	}
 
+	// find loop detection
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void RemoveLoop(Node<T> loop) {
 
@@ -145,10 +155,12 @@ public class linkedlist<T> {
 		ptr2.next = null;
 	}
 
+	// get head of list
 	public Node<T> getHead() {
 		return head;
 	}
 
+	// search node using value of node
 	public boolean search(T data) {
 		Node<T> n = head;
 		while (n.next != null && n.data != (data)) {
@@ -176,6 +188,7 @@ public class linkedlist<T> {
 		}
 	}
 
+	// display all list info
 	public void show() {
 		Node<T> n = head;
 		if (n == null) {
@@ -190,6 +203,7 @@ public class linkedlist<T> {
 
 	}
 
+	// generate list loop
 	public void loop() {
 		Node<T> n = head;
 		while (n.next != null) {
@@ -211,6 +225,7 @@ public class linkedlist<T> {
 		}
 	}
 
+	// remove stack of top position
 	public Node<T> stackTop() {
 		Node<T> n = head;
 		Node<T> prev = n;
@@ -224,6 +239,7 @@ public class linkedlist<T> {
 		return temp;
 	}
 
+	// get first position of list
 	public T peekQueue(int i) {
 		Node<T> n = head;
 		int counter = 0;
@@ -237,6 +253,7 @@ public class linkedlist<T> {
 		return temp;
 	}
 
+	// get last position of queue list
 	public T peekStack(int i) {
 		Node<T> n = head;
 		int counter = 0;
@@ -256,10 +273,6 @@ public class linkedlist<T> {
 		n.next = null;
 		position--;
 		return temp;
-
-	}
-
-	public static void main(String[] args) {
 
 	}
 

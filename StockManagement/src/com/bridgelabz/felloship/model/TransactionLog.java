@@ -3,8 +3,8 @@ package com.bridgelabz.felloship.model;
 import java.util.Date;
 
 public class TransactionLog {
+	// Transaction model
 	String transction;
-
 	String username;
 	String companysymbol;
 	String companyname;

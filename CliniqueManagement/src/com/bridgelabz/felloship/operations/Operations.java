@@ -1,6 +1,5 @@
 package com.bridgelabz.felloship.operations;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -9,9 +8,6 @@ import com.bridgelabz.felloship.control.Control;
 import com.bridgelabz.felloship.model.Appointment;
 import com.bridgelabz.felloship.model.Doctor;
 import com.bridgelabz.felloship.model.Patients;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class Operations {
 	static Scanner scanner = new Scanner(System.in);
@@ -19,7 +15,7 @@ public class Operations {
 	static Date date = new Date();
 	static SimpleDateFormat format = new SimpleDateFormat("MMMM-dd-yyyy");
 
-	public static void CliniqueManagement() throws JsonParseException, JsonMappingException, IOException {
+	public static void CliniqueManagement() {
 		int choice;
 		do {
 			System.out.println("*******************Clinique*********************");
@@ -27,12 +23,11 @@ public class Operations {
 					"Select option: \n1-AddDoctor\n2-AddPatient\n3-SearchDoctor\n4-SearchPtient\n5-Setppointment\n6-Showppointments");
 			System.out.print("\nYour Choice is: ");
 			choice = scanner.nextInt();
-
 			Cliniquemenu(choice);
 		} while (choice != 7);
 	}
 
-	public static void Cliniquemenu(int choice) throws JsonParseException, JsonMappingException, IOException {
+	public static void Cliniquemenu(int choice) {
 		switch (choice) {
 		case 1:
 			List<Doctor> list = Control.readDoctortFile();
@@ -50,32 +45,33 @@ public class Operations {
 			operationPatient.ShowAllPatients();
 			break;
 		case 3:
-			operationDoctor.SearchDoctorBy();
+			operationDoctor.SearchDoctorBy(); // search doctor
 			break;
 		case 4:
-			operationPatient.searchpatient();
+			operationPatient.searchpatient(); // search patient
 			break;
 		case 5:
-			getAppointment();
+			getAppointment(); // get appointment of doctors
 			break;
 		case 6:
-			searchappointment();
+			searchappointment(); // search appointment of date
 			break;
 		default:
 			break;
 		}
 	}
 
+	// search appointment using user input as date
 	@SuppressWarnings("deprecation")
-	public static void searchappointment() throws JsonParseException, JsonMappingException, IOException {
+	public static void searchappointment() {
 		System.out.println("Doctors are: ");
 		operationDoctor.ShowDoctors();
 
 		System.out.print("enter appointment Date(Day): ");
 		int searchbyday = Operations.scanner.nextInt();
 
-		List<Appointment> applog = Control.readAppointment();
-		date.setDate(searchbyday);
+		List<Appointment> applog = Control.readAppointment(); // read all appointments
+		date.setDate(searchbyday); // set user define date
 		System.out.println("Appointment of " + format.format(date));
 		System.out.println("enter doctor name: ");
 		String doctorname = Operations.scanner.next();
@@ -83,7 +79,7 @@ public class Operations {
 		System.out.println("************************************************");
 		for (Appointment appointment : applog) {
 
-			if (appointment.getDoctorname().equalsIgnoreCase(doctorname)) {
+			if (appointment.getDoctorname().equalsIgnoreCase(doctorname)) { // search by user define date
 				if (appointment.getDate().getDay() == date.getDay()
 						&& appointment.getDate().getMonth() == date.getMonth()) {
 					temp++;
@@ -103,31 +99,32 @@ public class Operations {
 
 	}
 
+	// get appointment
 	@SuppressWarnings("deprecation")
-	public static void getAppointment() throws JsonParseException, JsonMappingException, IOException {
+	public static void getAppointment() {
 		System.out.println("show available doctors in clinique: ");
-		operationDoctor.ShowDoctors();
-
-		Date date = new Date();
+		operationDoctor.ShowDoctors(); // show all available doctors in clinic
+		Date date = new Date(); // set current date
 		List<Appointment> list;
 		System.out.println("enter doctor name");
 		String doctorname = isStringInput(Operations.scanner.next());
 
 		int totalappointments;
 		do {
-			list = Control.readAppointment();
+			list = Control.readAppointment(); // read appointment list
 			totalappointments = 1;
 			for (Appointment appointment : list) {
-				if (appointment.getDoctorname().equals(doctorname)) {
+				if (appointment.getDoctorname().equals(doctorname)) { // check total appointment on date
 					if (appointment.getDate().getDay() == date.getDay()
 							&& appointment.getDate().getMonth() == date.getMonth()) {
 						totalappointments++;
 					}
 				}
 			}
+			// appointment is greater than 5
 			if (totalappointments == 6) {
 				System.out.println(format.format(date) + " --> Appoint ment Slot full..");
-				date.setDate(date.getDate() + 1);
+				date.setDate(date.getDate() + 1); // then increased date by 1
 			}
 		} while (totalappointments == 6);
 
@@ -150,17 +147,18 @@ public class Operations {
 	}
 
 	// check patient confirmation and entry
-	public static void Confirmappointment(String doctorname, Date date, int totalappointments, List<Appointment> list)
-			throws JsonGenerationException, JsonMappingException, IOException {
+	public static void Confirmappointment(String doctorname, Date date, int totalappointments, List<Appointment> list) {
 		Appointment appointment = new Appointment();
 		System.out.println("patient name");
 		String patientname = isStringInput(Operations.scanner.next());
 
-		boolean patientfind = operationPatient.ischeck(patientname);
+		boolean patientfind = operationPatient.ischeck(patientname); // is check patient is in list or new
 
 		// not register patient
-		if (!patientfind) {
+		if (!patientfind) {// existing patiens.
+
 			System.out.println("Its new patient: Please enter details ");
+			// set appointment details of patient
 			appointment.setPatientname(patientname);
 			System.out.println("Doctor name: " + doctorname);
 			appointment.setDoctorname(doctorname);
@@ -170,8 +168,8 @@ public class Operations {
 			Control.writeAppointment(list);
 			System.out.println("Appointment Saved..!\n");
 			Cliniquemenu(2);
-		} else {
-			// existing patients
+		} else { // existing patients Add in patient list
+
 			System.out.println("already exist");
 			appointment.setPatientname(patientname);
 			System.out.println(patientname);
@@ -184,6 +182,7 @@ public class Operations {
 		}
 	}
 
+	// check its string input or not
 	public static String isStringInput(String StringInputData) {
 		if (StringInputData.matches("^[a-zA-Z]*$")) {
 			return StringInputData;
@@ -196,6 +195,7 @@ public class Operations {
 	}
 
 	@SuppressWarnings("unused")
+	// check string in only number format
 	public static String isNumeric(String StringInputNumber) {
 		try {
 			int isvalid = Integer.parseInt(StringInputNumber);

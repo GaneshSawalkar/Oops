@@ -10,12 +10,10 @@ public class deskofcardQueue {
 
 	public static void main(String[] args) {
 		System.out.println("enter numbers of players");
-		DeskofCardQueueOperation.players = sc.nextInt();
+		DeskofCardQueueOperation.players = sc.nextInt(); // numbers of players
 		System.out.println("Amount of cards to distribute " + DeskofCardQueueOperation.players + " players");
-		DeskofCardQueueOperation.playcards = sc.nextInt();
-		
+		DeskofCardQueueOperation.playcards = sc.nextInt(); // numbers of each players cards
 		DeskofCardQueueOperation.playerscards();
 
-		
 	}
 }

@@ -1,23 +1,19 @@
 package com.bridgelabz.felloship.operation;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.bridgelabz.felloship.control.*;
-import com.bridgelabz.felloship.model.stockmodel;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.bridgelabz.felloship.model.Stocks;
 
 public class StockOperations {
-
+	// default stock path
 	public static String spath = "/home/admin1/Desktop/JavaProject/StockManagement/src/com/bridgelabz/felloship/stockinventory.json";
-	static List<stockmodel> list = new ArrayList<stockmodel>();
+	static List<Stocks> list = new ArrayList<Stocks>();
 	static Scanner scanner = new Scanner(System.in);
 
-	public static void stockmenu() throws JsonParseException, JsonMappingException, IOException {
+	public static void StockMenu() {
 		int ch;
 		do {
 			System.out.println("*****************Menu******************");
@@ -27,50 +23,50 @@ public class StockOperations {
 			ch = scanner.nextInt();
 			switch (ch) {
 			case 1:
-				Displaystock();
-				AddStock();
+				Displaystock(); // old show all stocks
+				AddStock(); // add stock
 				System.out.println("Added: ");
-				Displaystock();
+				Displaystock(); // updated show all stock
 				break;
 			case 2:
-				deleteStock();
-				Displaystock();
+				deleteStock(); // delete stock
+				Displaystock(); // show updated stock
 				break;
 			case 3:
-				updatestock();
-				Displaystock();
+				updatestock(); // update stock info
+				Displaystock(); // show update stock info
 				break;
 			case 4:
-				Displaystock();
+				Displaystock(); // show all stocks
 				break;
 			case 5:
-				SearchStock();
+				SearchStock(); // search stock
 				break;
 			case 6:
-				System.out.println("Thank you.....!");
+				System.out.println("Thank you.....!"); // exit stock menu
 				return;
 
 			default:
-				System.out.println("invalid select..");
-				stockmenu();
+				System.out.println("invalid select.."); // Invalid input
+				StockMenu();
 				break;
 			}
-		} while (ch != 6);
+		} while (ch != 6); // break if input is 6.
 
 	}
 
-	private static void getstock(stockmodel stockmodel) {
+	private static void getstock(Stocks stockmodel) { // show stock
 		System.out.println(stockmodel.companysymbol + "|" + stockmodel.companyname + "|"
 				+ stockmodel.companyavailableshare + "|" + stockmodel.shareprice);
 		System.out.println();
 	}
 
-	private static void SearchStock() throws JsonParseException, JsonMappingException, IOException {
+	private static void SearchStock() {
 		System.out.println("enter comapny symbol");
 		String inputsymbol = scanner.next();
 		boolean find = false;
 		list = StockControl.readStock(spath);
-		for (stockmodel stockmodel : list) {
+		for (Stocks stockmodel : list) {// search stock by company symbol
 			if (stockmodel.companysymbol.equals(inputsymbol)) {
 				find = true;
 				getstock(stockmodel);
@@ -81,12 +77,12 @@ public class StockOperations {
 		}
 	}
 
-	public static void AddStock() throws JsonGenerationException, JsonMappingException, IOException {
-		List<stockmodel> newlist = new ArrayList<stockmodel>();
-		for (stockmodel stockmodel : list) {
+	public static void AddStock() {
+		List<Stocks> newlist = new ArrayList<Stocks>();
+		for (Stocks stockmodel : list) {
 			newlist.add(stockmodel);
 		}
-		stockmodel stockmodel = new stockmodel();
+		Stocks stockmodel = new Stocks();
 		System.out.println("new entry");
 		System.out.println("symbol");
 		stockmodel.setCompanysimbol(scanner.next());
@@ -96,37 +92,36 @@ public class StockOperations {
 		stockmodel.setCompanyavailableshare(scanner.nextInt());
 		System.out.println("price");
 		stockmodel.setShareprice(scanner.nextInt());
-		newlist.add(stockmodel);
-		StockControl.writeStock(newlist);
+		newlist.add(stockmodel);// add stock in list
+		StockControl.writeStock(newlist); // write new updated stock list
 	}
 
-	public static void updatestock() throws JsonParseException, JsonMappingException, IOException {
+	public static void updatestock() {
 		Displaystock();
-
 		System.out.println("enter symbol");
 		String inputsymbol = scanner.next();
 		boolean find = false;
-		for (stockmodel stockmodel : list) {
+		for (Stocks stockmodel : list) {
 
-			if (stockmodel.companysymbol.equals(inputsymbol)) {
+			if (stockmodel.companysymbol.equals(inputsymbol)) { // search by input-symbol
 				find = true;
 				System.out.println("enter choice");
 				int ch = scanner.nextInt();
 				switch (ch) {
 				case 1:
 					System.out.println("update stock");
-					stockmodel.setCompanyavailableshare(scanner.nextInt());
+					stockmodel.setCompanyavailableshare(scanner.nextInt()); // set new available shares
 					break;
 				case 2:
 					System.out.println("updatre price");
-					stockmodel.setShareprice(scanner.nextInt());
+					stockmodel.setShareprice(scanner.nextInt()); // assign new share price
 					break;
 				default:
 					break;
 				}
 			}
 		}
-		if (find) {
+		if (find) { // stock not found
 			System.out.println("not in stock ");
 
 		} else {
@@ -134,34 +129,31 @@ public class StockOperations {
 		}
 	}
 
-	private static void deleteStock() throws JsonParseException, JsonMappingException, IOException {
-		Displaystock();
-
+	private static void deleteStock() {
+		Displaystock();// show stocks
 		System.out.println("enter comapny symbol");
 		String inputsymbol = scanner.next();
-		list = StockControl.readStock(spath);
+		list = StockControl.readStock(spath); // read all stocks
 		boolean find = false;
-		for (stockmodel stockmodel : list) {
-			if (stockmodel.companysymbol.equals(inputsymbol)) {
+		for (Stocks stockmodel : list) {
+			if (stockmodel.companysymbol.equals(inputsymbol)) {// check stock-symbol= user input symbol
 				find = true;
-				list.remove(stockmodel);
+				list.remove(stockmodel); // delete stock
 				break;
 			}
 		}
-		if (!find) {
+		if (!find) { // Stock not found
 			System.out.println("not in stock");
 		} else {
 			System.out.println("Deleted: ");
 
 		}
-		StockControl.writeStock(list);
-
+		StockControl.writeStock(list); // update and write file
 	}
 
-	public static void Displaystock() throws JsonParseException, JsonMappingException, IOException {
-		list = StockControl.readStock(spath);
-		for (stockmodel stockmodel : list) {
-
+	public static void Displaystock() {
+		list = StockControl.readStock(spath); // read stock details from file
+		for (Stocks stockmodel : list) { // show each details of stocks
 			System.out.println("company " + stockmodel.companysymbol + " " + stockmodel.companyname + " having shares: "
 					+ stockmodel.companyavailableshare + " at price "
 					+ stockmodel.shareprice * stockmodel.companyavailableshare);

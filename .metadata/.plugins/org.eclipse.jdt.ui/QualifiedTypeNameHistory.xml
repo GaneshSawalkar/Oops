@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.JavaType"/>
-    <fullyQualifiedTypeName name="com.Bridgelab.Felloship.Utility.Utility"/>
-    <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.compiler.sym"/>
-    <fullyQualifiedTypeName name="com.Bridgelab.Felloship.oops.Product"/>
-    <fullyQualifiedTypeName name="com.Bridgelab.Felloship.oops.inventory"/>
-    <fullyQualifiedTypeName name="com.Bridgelab.Felloship.oops.InventoryManager"/>
-    <fullyQualifiedTypeName name="com.bridgelabz.felloship.inventory.JSONInventoryDataManagement"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.control.operations"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.control.control"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.productmenu.InventoryManager"/>
@@ -14,7 +7,6 @@
     <fullyQualifiedTypeName name="sun.jvm.hotspot.runtime.ObjectMonitor"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.main.getshare"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.core.type.TypeReference"/>
     <fullyQualifiedTypeName name="java.io.File"/>
@@ -44,11 +36,8 @@
     <fullyQualifiedTypeName name="java.util.ResourceBundle.Control"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.control.StockControl"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.operations.operations"/>
-    <fullyQualifiedTypeName name="com.bridgelabz.felloship.source.Person"/>
-    <fullyQualifiedTypeName name="com.bridgelabz.felloship.utility.Utility"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.model.Doctor"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.model.Patients"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.model.Appointment"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.operations.operationDoctor"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.operations.operationPatient"/>
@@ -57,7 +46,18 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.operations.Operations"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.bridgelabz.felloship.inventory.Product"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.source.AddressBook"/>
     <fullyQualifiedTypeName name="sun.jvm.hotspot.oops.java_lang_Class"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.source.Operations"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.utility.Utility"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.source.Person"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.source.Control"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.bridgelabz.felloship.model.Stocks"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
 </qualifiedTypeNameHistroy>

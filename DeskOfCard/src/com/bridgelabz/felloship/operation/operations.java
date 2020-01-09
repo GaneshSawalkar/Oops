@@ -34,7 +34,7 @@ public class operations {
 
 	public static void playerscards() {
 		allotcards = new String[playcards][players];
-		if (totalcards >= (playcards * players)) {
+		if (totalcards >= (playcards * players)) { // check all players are card not greater the total cards
 			generateCardCombination();
 			for (int i = 0; i < playcards; i++) {
 				int j = 0;
