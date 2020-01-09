@@ -1,10 +1,7 @@
 package com.bridgelabz.felloship.inventory;
 
-import java.io.IOException;
 import com.bridgelabz.felloship.operations.*;
 import com.bridgelabz.felloship.productmenu.*;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class JSONInventoryDataManagement {
 
@@ -16,7 +13,8 @@ public class JSONInventoryDataManagement {
 		}
 	}
 
-	public static void menu() throws JsonParseException, JsonMappingException, IOException {
+	// inventory show
+	public static void menu() {
 		InventoryManager.pricemenu();
 		System.out.println("******************Operations***************");
 
@@ -27,25 +25,25 @@ public class JSONInventoryDataManagement {
 			key = operations.scanner.nextInt();
 			switch (key) {
 			case 1:
-				InventoryManager.pricemenu();
-				operations.add();
-				InventoryManager.pricemenu();
+				InventoryManager.pricemenu(); // show inventory
+				operations.add(); // add new inventory
+				InventoryManager.pricemenu(); // show updated inventory
 				break;
 			case 2:
-				InventoryManager.pricemenu();
-				operations.del();
-				InventoryManager.pricemenu();
+				InventoryManager.pricemenu(); // show inventory
+				operations.del(); // remove inventory
+				InventoryManager.pricemenu(); // show updated inventory
 				break;
 			case 3:
-				InventoryManager.pricemenu();
-				operations.update();
-				InventoryManager.pricemenu();
+				InventoryManager.pricemenu(); // show inventory
+				operations.update(); // update inventory information
+				InventoryManager.pricemenu();// show updated inventory
 				break;
 			case 4:
-				operations.display();
+				operations.search(); // search inventry
 				break;
 			case 5:
-				InventoryManager.pricemenu();
+				InventoryManager.pricemenu(); // show all inventory with price
 				break;
 			case 6:
 				return;

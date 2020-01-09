@@ -18,4 +18,9 @@
   "name" : "rajstani",
   "price" : 415,
   "weight" : 10
+}, {
+  "type" : "wheat",
+  "name" : "lifegold",
+  "price" : 12,
+  "weight" : 10
 } ]
