@@ -76,8 +76,8 @@ public class DeskofCardQueueOperation {
 		int card;
 		do {
 			SecureRandom rand = new SecureRandom();
-			card = rand.nextInt(52);
-		} while (check.contains(card));
+			card = rand.nextInt(52); //get random numbers between 0-51
+		} while (check.contains(card)); //if random number is in list then again generate
 		return card;
 	}
 
@@ -93,6 +93,7 @@ public class DeskofCardQueueOperation {
 		}
 	}
 
+	//show all cards
 	public static void showPlayersCard() {
 		for (int i = 0; i < ob.length; i++) {
 			System.out.println("\nplayer " + (i + 1));

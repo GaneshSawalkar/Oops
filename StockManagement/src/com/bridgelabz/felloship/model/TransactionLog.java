@@ -68,4 +68,11 @@ public class TransactionLog {
 		this.transction = transction;
 	}
 
+	@Override
+	public String toString() {
+		return "Transction Type = " + transction + "\nUsername = " + username + "\nCompany-Symbol = "
+				+ companysymbol + "\nCompany-Name = " + companyname + "\nCompany-Shares = " + companyshares + "\nShare-Price = "
+				+ shareprice + "\nDate = " + date ;
+	}
+
 }

@@ -8,7 +8,7 @@ import com.bridgelabz.felloship.control.*;
 import com.bridgelabz.felloship.model.stockmodel;
 
 public class StockOperations {
-	public static String spath = "/home/admin1/Desktop/JavaProject/StockAccountManagement/src/com/bridgelabz/felloship/stockinventory.json";
+	public static String spath = "/home/admin1/Desktop/JavaProject/StockAccountManagement/src/com/bridgelabz/felloship/files/stockinventory.json";
 	static List<stockmodel> list;
 	static Scanner scanner = new Scanner(System.in);
 

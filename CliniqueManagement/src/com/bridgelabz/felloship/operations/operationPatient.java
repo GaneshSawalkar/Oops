@@ -16,13 +16,14 @@ public class operationPatient {
 
 		Patients newpatients = new Patients();
 		System.out.print("enter the name of patient: ");
-		newpatients.setPatientName(Operations.isStringInput(Operations.scanner.next()));// set patient name
+		newpatients.setPatientName(Operations.isStringInput());// set patient name
 		System.out.println("enter the id");
-		newpatients.setPatientId(Operations.isNumeric(Operations.scanner.next())); // set patient id
+		newpatients.setPatientId(Operations.isNumericString(Operations.scanner.next())); // set patient id
 		System.out.println("enter contact number : ");
-		newpatients.setContactNumber(Operations.isNumeric(Operations.scanner.next())); // set patient contact number
+		newpatients.setContactNumber(Operations.isvalidphone()); // set patient contact
+																	// number
 		System.out.println("enter age of patient: ");
-		newpatients.setAge(Operations.scanner.nextInt()); // set patient age
+		newpatients.setAge(Operations.isvalidInteger()); // set patient age
 
 		lists.add(newpatients); // add new patient in list
 		return lists; // return newly added list
@@ -34,17 +35,17 @@ public class operationPatient {
 		switch (ch) {
 		case 1:
 			System.out.println("enter Patient id: ");
-			String inputid = Operations.scanner.next();
+			String inputid = Operations.isNumericString(Operations.scanner.next());
 			searchPatient(inputid);// search patient by user id
 			break;
 		case 2:
 			System.out.println("enter Patient name: ");
-			String inputname = Operations.scanner.next();
+			String inputname = Operations.isStringInput();
 			searchPatient(inputname);// search patient by user name
 			break;
 		case 3:
 			System.out.println("enter Patient contact: ");
-			String inputcontact = Operations.scanner.next();
+			String inputcontact = Operations.isvalidphone();
 			searchPatient(inputcontact); // search patient by user contact
 			break;
 		default:
@@ -53,27 +54,23 @@ public class operationPatient {
 	}
 
 	// search patient by user input
-	private static void searchPatient(String input) {
+	public static boolean searchPatient(String input) {
 		List<Patients> list = Control.readPatientFile();
-		if (!ischeck(input)) {
-			System.out.println("this doctor not in this clinique");
-		} else {
-			System.out.println("********************************");
+		boolean find = false;
+		System.out.println("********************************");
 
-			for (Patients patients : list) {
-				if (patients.getContactNumber().equals(input) || patients.getPatientName().equals(input)
-						|| patients.getPatientId().equals(input)) {
-					Show(patients);
-				}
+		for (Patients patients : list) {
+			if (patients.getContactNumber().equals(input) || patients.getPatientName().equals(input)
+					|| patients.getPatientId().equals(input)) {
+				System.out.println(patients.toString());
+				find = true;
 			}
 		}
-	}
-
-	// details patient details
-	private static void Show(Patients patients) {
-		System.out.println("Patient Name: " + patients.getPatientName() + "\nPatientId: " + patients.getAge()
-				+ "\nPatient Contact: " + patients.getContactNumber());
-		System.out.println("********************************");
+		if (!find) {
+			System.out.println("not found..!");
+			return false;
+		}
+		return true;
 
 	}
 
@@ -82,21 +79,9 @@ public class operationPatient {
 		List<Patients> list = Control.readPatientFile();
 		System.out.println("********************************");
 		for (Patients patients : list) {
-			Show(patients);
+			System.out.println(patients.toString());
+			System.out.println("********************************");
 		}
-	}
-
-	// check patient in list or not
-	public static boolean ischeck(String input) {
-		List<Patients> patientlist = Control.readPatientFile();
-
-		for (Patients patients : patientlist) {
-			if (patients.getContactNumber().equals(input) || patients.getPatientName().equals(input)
-					|| patients.getPatientId().equals(input)) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 }

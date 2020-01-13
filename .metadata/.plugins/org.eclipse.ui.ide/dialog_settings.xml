@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/admin1/Documents/OOPSPrograms/addressbook"/>
+		<item value="/home/admin1/Desktop/addressbook"/>
+		<item value="/home/admin1/Desktop/add"/>
 		<item value="/home/admin1/Desktop/jar/Addressbook-development"/>
 		<item value="/home/admin1/Desktop/ganeshproject/InventoryManagement"/>
 		<item value="/home/admin1/Desktop/ganeshproject/InventoryManagment"/>
@@ -28,5 +31,13 @@
 			<item key="DIALOG_Y_ORIGIN" value="166"/>
 			<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 		</section>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="254"/>
+		<item key="DIALOG_Y_ORIGIN" value="254"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>

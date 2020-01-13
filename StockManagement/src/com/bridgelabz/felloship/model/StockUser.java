@@ -21,4 +21,9 @@ public class StockUser {
 		this.username = username;
 	}
 
+	@Override
+	public String toString() {
+		return "Username: " + getUsername() + "\nTotal shares: " + getShare();
+	}
+
 }

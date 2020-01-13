@@ -29,5 +29,10 @@ public class Doctor {
 	public void setAvailable(String available) {
 		this.available = available;
 	}
+	@Override
+	public String toString() {
+		return "Id: " + getDoctorId() + "\nName: " + getDoctorname() + "\nSpecilization"
+				+ getSpecialization() + "\nTiming: " + getAvailable();
+	}
 
 }

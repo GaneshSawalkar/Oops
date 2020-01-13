@@ -39,4 +39,10 @@ public class Appointment {
 	public Date getDate() {
 		return date;
 	}
+
+	@Override
+	public String toString() {
+		return "Appointment [patientname=" + patientname + ", doctorname=" + doctorname + ", appointment=" + appointment
+				+ ", date=" + date + "]";
+	}
 }

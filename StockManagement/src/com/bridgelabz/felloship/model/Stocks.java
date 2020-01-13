@@ -39,4 +39,10 @@ public class Stocks {
 		this.shareprice = shareprice;
 	}
 
+	@Override
+	public String toString() {
+		return "company " + companysymbol + " " + companyname + " having shares: " + companyavailableshare
+				+ " at price " + shareprice * companyavailableshare;
+	}
+
 }

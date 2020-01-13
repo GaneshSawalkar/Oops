@@ -17,11 +17,11 @@ public class operationDoctor {
 		operationDoctor.ShowDoctors();
 		Doctor newDoctorentry = new Doctor();
 		System.out.println("new doctor name: "); // set doctor name
-		newDoctorentry.setDoctorname(Operations.isStringInput(Operations.scanner.next()));
+		newDoctorentry.setDoctorname(Operations.isStringInput());
 		System.out.println("new doctor id: "); // set doctor id
-		newDoctorentry.setDoctorId(Operations.isNumeric(Operations.scanner.next()));
+		newDoctorentry.setDoctorId(Operations.isNumericString(Operations.scanner.next()));
 		System.out.println("enter new doctor specialization: "); // set doctor specialization
-		newDoctorentry.setSpecialization(Operations.isStringInput(Operations.scanner.next()));
+		newDoctorentry.setSpecialization(Operations.isStringInput());
 		System.out.println("enter new doctor timing: Am/Pm"); // set doctor in time
 		newDoctorentry.setAvailable(Operations.scanner.next());
 
@@ -32,7 +32,7 @@ public class operationDoctor {
 
 	public static void SearchDoctorBy() {
 		System.out.println("1-Id\n2-Name\n3-specilization\n4-availabel\n");
-		int choice = Operations.scanner.nextInt();
+		int choice = Operations.isvalidInteger();
 		switch (choice) {
 		case 1:
 			System.out.println("enter the doctor Id");
@@ -64,7 +64,7 @@ public class operationDoctor {
 			if (doctor.getDoctorId().equals(input) || doctor.getAvailable().equals(input)
 					|| doctor.getDoctorname().equals(input) || doctor.getSpecialization().equals(input)) {
 				find = true;
-				show(doctor);
+				System.out.println(doctor.toString());
 			}
 
 		}
@@ -74,20 +74,13 @@ public class operationDoctor {
 
 	}
 
-	// show doctors details
-	public static void show(Doctor doctor) {
-		System.out.println("Id: " + doctor.getDoctorId() + "\nName: " + doctor.getDoctorname() + "\nSpecilization"
-				+ doctor.getSpecialization() + "\nTiming: " + doctor.getAvailable());
-
-	}
-
 	// show all docrtors
 	public static void ShowDoctors() {
 		List<Doctor> list = Control.readDoctortFile();
 		System.out.println("********************************");
 
 		for (Doctor doctor : list) {
-			show(doctor);
+			System.out.println(doctor.toString());
 			System.out.println("********************************");
 
 		}

@@ -11,8 +11,6 @@ import com.bridgelabz.felloship.model.TransactionLog;
 import com.bridgelabz.felloship.operation.StockOperations;
 
 public class DataProcessing {
-	// Initialized for take input from user
-	static Scanner sc = new Scanner(System.in);
 
 	public static void usermenu() {
 		int key;
@@ -20,7 +18,7 @@ public class DataProcessing {
 			System.out.println("**********************Menu*************************");
 			System.out.println("1-Add user\n" + "2-remove user\n" + "3-Transaction\n" + "4-check share stock mareket");
 			System.out.print("select choice:-> ");
-			key = sc.nextInt();
+			key = inputvalidation.isvalidInteger();
 			switch (key) {
 			case 1:
 				addusers(); // Add new user entry
@@ -30,7 +28,7 @@ public class DataProcessing {
 				removeuser(); // Remove User
 				break;
 			case 3:
-				transactions(); // Users transaction (buy and sales).
+				transactionsmenu(); // Users transaction (buy and sales).
 				break;
 			case 4:
 				StockOperations.Displaystock(); // show all stock report
@@ -46,20 +44,20 @@ public class DataProcessing {
 		List<StockUser> list = StockControl.readusers();
 		System.out.println("***********************************");
 		for (StockUser stockUser : list) {
-			System.out.println("Username: " + stockUser.getUsername() + "\nTotal shares: " + stockUser.getShare());
+			System.out.println(stockUser.toString());
 			System.out.println("***********************************");
 		}
 	}
 
 	// users transactions buy and sales shares.
-	public static void transactions() {
+	public static void transactionsmenu() {
 		int key;
 		do {
 			System.out.println();
 			System.out.println("**************Transaction**************");
 			System.out.println("1-Buy Shares\n" + "2-Sale Shares\n" + "3-user Log\n" + "4-Stock Menu");
 			System.out.print("enter choice: ");
-			key = sc.nextInt();
+			key = inputvalidation.isvalidInteger();
 			// select choice for operation
 			switch (key) {
 			case 1:
@@ -89,7 +87,7 @@ public class DataProcessing {
 		StockUser newentry = new StockUser(); // new class initialized
 
 		System.out.print("enter user name: "); // take new user name
-		newentry.setUsername(sc.next());
+		newentry.setUsername(inputvalidation.isString());
 		System.out.println();
 		newentry.setShare(0); // default new user having 0 shares.
 
@@ -104,7 +102,7 @@ public class DataProcessing {
 		List<StockUser> user = StockControl.readusers();
 
 		System.out.print("\nenter user name: \n"); // user name for search
-		String inputusername = sc.next();
+		String inputusername = inputvalidation.isString();
 
 		boolean find = false; // for check user in list or not
 		for (StockUser stockUser : user) {
@@ -129,13 +127,13 @@ public class DataProcessing {
 	private static void buy() {
 		StockOperations.Displaystock(); // show all stock info.
 		System.out.println("user name"); // input for search
-		String username = sc.next();
+		String username = inputvalidation.isString();
 		List<StockUser> user = StockControl.readusers(); // get all users from file
 		for (StockUser stockUser : user) { // search all user from list.
 
 			if (stockUser.getUsername().equalsIgnoreCase(username)) { // if user found
 				System.out.println("enter company symbol"); // company symbols
-				String inputsymbol = sc.next();
+				String inputsymbol = inputvalidation.scanner.next();
 				DataProcessing.displayAllusers(); // show all users having shares.
 				String spath = StockOperations.spath;
 				List<Stocks> list = StockControl.readStock(spath); // read all stock info
@@ -147,7 +145,7 @@ public class DataProcessing {
 																										// shares
 						System.out.println("price per share is: " + stockmodel.shareprice); // share price per share
 						System.out.println("no. of share you want?");// user input for buys number of shares.
-						int getshare = sc.nextInt();
+						int getshare = inputvalidation.isvalidInteger();
 						// display no. of shares want * actual share price
 						System.out.println("your buy" + getshare + " share at " + getshare * stockmodel.shareprice);
 
@@ -167,10 +165,10 @@ public class DataProcessing {
 	}
 
 	/**
-	 * @param stockUser
-	 * @param stockmodel
-	 * @param status
-	 * @param amount
+	 * @param stockUser  user
+	 * @param stockmodel user selected stock
+	 * @param status     buy/sell share
+	 * @param amount     buy/sell amount of shares
 	 */
 	// Transaction having sale or buys shares option
 	public static void Transaction(StockUser stockUser, Stocks stockmodel, String status, int amount) {
@@ -206,7 +204,7 @@ public class DataProcessing {
 		System.out.println("1-all transaction of users");
 		boolean find = false;
 		System.out.print("enter the name : "); // transaction of users in list
-		String username = sc.next();
+		String username = inputvalidation.isString();
 		System.out.println();
 		List<TransactionLog> log = StockControl.readlog(); // read all transaction from file
 		for (TransactionLog transactionLog : log) {
@@ -226,18 +224,18 @@ public class DataProcessing {
 	private static void sell() {
 		StockOperations.Displaystock(); // all stock display
 		System.out.println("username");
-		String username = sc.next();
+		String username = inputvalidation.isString();
 		List<StockUser> user = StockControl.readusers();
 		for (StockUser stockUser : user) { // if user found then
 			if (stockUser.getUsername().equals(username)) {
 				System.out.println("enter company symbol"); // enter company symbol
-				String inputsymbol = sc.next();
+				String inputsymbol = inputvalidation.scanner.next();
 				String spath = StockOperations.spath;
 				List<Stocks> list = StockControl.readStock(spath); // get all stock info
 				for (Stocks stockmodel : list) {
 					if (stockmodel.companysymbol.equals(inputsymbol)) { // check stock info and input-symbol
 						System.out.println("enter share amount");
-						int shares = sc.nextInt();
+						int shares = inputvalidation.isvalidInteger();
 						System.out.println("your shares is : " + shares + "\nper share price: " + stockmodel.shareprice
 								+ "\ntotal price is: " + shares * stockmodel.shareprice); // show shares and available
 																							// price

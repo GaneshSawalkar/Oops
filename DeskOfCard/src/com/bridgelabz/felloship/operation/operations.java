@@ -57,12 +57,12 @@ public class operations {
 
 	}
 
-	// distribute cards to players
+	// generate unique random number
 	public static int getRandomCard() {
 		int randomInt;
 		do {
 			SecureRandom rand = new SecureRandom();
-			randomInt = rand.nextInt(52);
+			randomInt = rand.nextInt(52); // number between 0-51
 		} while (check.contains(randomInt));
 		return randomInt;
 	}

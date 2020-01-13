@@ -2,8 +2,12 @@ package com.bridgelabz.felloship.operations;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.bridgelabz.felloship.control.Control;
 import com.bridgelabz.felloship.model.Appointment;
 import com.bridgelabz.felloship.model.Doctor;
@@ -14,6 +18,7 @@ public class Operations {
 	static int totalappointments = 1;
 	static Date date = new Date();
 	static SimpleDateFormat format = new SimpleDateFormat("MMMM-dd-yyyy");
+	static String phonenumber;
 
 	public static void CliniqueManagement() {
 		int choice;
@@ -107,7 +112,7 @@ public class Operations {
 		Date date = new Date(); // set current date
 		List<Appointment> list;
 		System.out.println("enter doctor name");
-		String doctorname = isStringInput(Operations.scanner.next());
+		String doctorname = isStringInput();
 
 		int totalappointments;
 		do {
@@ -133,7 +138,7 @@ public class Operations {
 		System.out.println("*********************************************");
 
 		System.out.println("do you want to get tomorrow : Yes/No ");
-		String get = isStringInput(Operations.scanner.next());
+		String get = isStringInput();
 
 		if (get.equalsIgnoreCase("yes")) {
 
@@ -150,12 +155,10 @@ public class Operations {
 	public static void Confirmappointment(String doctorname, Date date, int totalappointments, List<Appointment> list) {
 		Appointment appointment = new Appointment();
 		System.out.println("patient name");
-		String patientname = isStringInput(Operations.scanner.next());
-
-		boolean patientfind = operationPatient.ischeck(patientname); // is check patient is in list or new
+		String patientname = isStringInput();
 
 		// not register patient
-		if (!patientfind) {// existing patiens.
+		if (!operationPatient.searchPatient(patientname)) {// existing patiens.
 
 			System.out.println("Its new patient: Please enter details ");
 			// set appointment details of patient
@@ -182,27 +185,61 @@ public class Operations {
 		}
 	}
 
-	// check its string input or not
-	public static String isStringInput(String StringInputData) {
-		if (StringInputData.matches("^[a-zA-Z]*$")) {
-			return StringInputData;
-		} else {
-			System.out.println("Not valid Input.....!\ninput again: ");
+	public static int isvalidInteger() {
+		int i = 0;
+		boolean ok = true;
+		while (ok) {
+			try {
 
-			isStringInput(Operations.scanner.next());
+				i = scanner.nextInt();
+				ok = false;
+			} catch (InputMismatchException e) {
+				System.out.println("Not integer value.");
+				System.out.print("select again: ");
+				scanner.next();
+			}
 		}
-		return StringInputData;
+
+		return i;
 	}
 
-	@SuppressWarnings("unused")
-	// check string in only number format
-	public static String isNumeric(String StringInputNumber) {
+	public static String isNumericString(String integer) {
 		try {
-			int isvalid = Integer.parseInt(StringInputNumber);
-		} catch (NumberFormatException nfe) {
-			isNumeric(StringInputNumber);
+			int check = Integer.parseInt(integer);
+		} catch (NumberFormatException e) {
+			System.out.println("invalid format enter again:");
+			integer = isNumericString(scanner.next());
 		}
-		return StringInputNumber;
+		return integer;
+	}
+
+	// check its string input or not
+	public static String isStringInput() {
+		String input;
+		boolean flag = false;
+		do {
+			input = scanner.next();
+			if (input.matches("^[a-zA-Z]*$")) {
+				flag = true;
+			} else {
+				System.out.print("Wrong input..! type again :");
+			}
+		} while (!flag);
+		return input;
+	}
+
+	public static String isvalidphone() {
+		phonenumber = scanner.next();
+		Pattern pattern = Pattern.compile("[7-9][0-9]{9}");
+		Matcher matcher = pattern.matcher(phonenumber);
+		if (matcher.find()) {
+			return phonenumber;
+		} else {
+			System.out.println("number must be 10 digit & start with 7-9");
+			isvalidphone();
+		}
+		return phonenumber;
+
 	}
 
 }
